@@ -1,3 +1,5 @@
 # Vehicle Deploy Framework
 
-### W.I.P. Working on the 1st actual working version (currently all scrambled and too messy) :(
+Please feel free to contribute!
+
+## For mod makers, visit the Wiki section

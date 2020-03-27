@@ -2,7 +2,7 @@ class CfgPatches {
 	class JRS_Vehicle_Deploy {
 		name = "Vehicle deploy framework";
 		description = "An open source and free use framework to deploy objects from vehicles";
-		author = "JoyRide Scripting";
+		author = "JoyRide Soft";
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 1.81;
