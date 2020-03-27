@@ -1,5 +1,5 @@
 /**
-[_type, _heading, _position] call TFC_fnc_createObject;
+[_type, _heading, _position] call JRS_fnc_createObject;
 
 Returns The created object
  */
