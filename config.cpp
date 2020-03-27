@@ -1,23 +1,29 @@
 class CfgPatches {
-    class JRS_Vehicle_Deploy {
+	class JRS_Vehicle_Deploy {
 		name = "Vehicle deploy framework";
 		description = "An open source and free use framework to deploy objects from vehicles";
 		author = "JoyRide Scripting";
 		units[] = {};
-		weapons = {};
-		requiredVersion = 1.0;
+		weapons[] = {};
+		requiredVersion = 1.81;
 		requiredAddons[] = {};
+		version = "0.0.1";
 	};
 };
 
-class CfgFunctions {
-	class JRS {
-		file = "\JRS_vehicle_deploy\functions";
-		class Vehicle {
-			class deployObjects { };
+class JRS_UserActions {
+	class Vehicle_Deploy {
+		class Camp_Deploy {
+			priority = 0;
+			showWindow = "false";
+			displayText = "Deploy the net";
+			selection = "";
+			radius = 5;
 		};
-		class Utils {
-			class createObject { };
+		class Camp_Pack : Camp_Deploy {
+			displayText = "Pack the net";
 		};
 	};
 };
+
+#include "config\CfgFunctions.hpp"
