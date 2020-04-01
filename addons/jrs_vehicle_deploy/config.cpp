@@ -16,12 +16,12 @@ class JRS_UserActions {
 		class Camp_Deploy {
 			priority = 0;
 			showWindow = "false";
-			displayText = "Deploy the net";
+			displayText = "Deploy the camp";
 			selection = "";
 			radius = 5;
 		};
 		class Camp_Pack : Camp_Deploy {
-			displayText = "Pack the net";
+			displayText = "Pack the camp";
 		};
 	};
 };
