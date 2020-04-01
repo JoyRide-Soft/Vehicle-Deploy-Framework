@@ -25,12 +25,12 @@ if (count _items > 0) then {
 			// Create an object of a type, position and orientation specified in each classes under the JRS_DeployItem class.
 			{
 				private ["_type", "_spawnPos", "_heading", "_object"];
-				sleep 2;
+				sleep getNumber (_x >> "deployTime");
 				_spawnPos = _vehicle modelToWorldVisual getArray (_x >> "position");
 				_heading = direction _vehicle + getNumber (_x >> "direction");
 				_type = getText (_x >> "type");
 				_object = [_type, _heading, _spawnPos] call JRS_fnc_createObject;
-				_camp pushBack _object;
+				_camp pushBack [getNumber (_x >> "packTime"), _object];
 			} forEach _items;
 
 			// Add a reference of every object created of deletion.
@@ -52,8 +52,8 @@ if (count _items > 0) then {
 
 			// Delete every object deployed.
 			{
-				sleep 2;
-				deleteVehicle _x;
+				sleep (_x select 0);
+				deleteVehicle (_x select 1);
 			} forEach _camp;
 
 			// Set the « Packed » state.
