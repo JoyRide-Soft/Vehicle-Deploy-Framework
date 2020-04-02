@@ -17,6 +17,14 @@ if (count _items > 0) then {
 		case 0: {
 			systemChat "Deploying Camp";
 
+			// Remove CampItem from vehicle's inventory
+			private _cargo = itemCargo _vehicle;
+			_cargo deleteAt (_cargo find "JRS_CampItem");
+			clearItemCargo _vehicle;
+			{
+				_vehicle addItemCargo [_x, 1];
+			} forEach _cargo;
+
 			// Set « In progress » state.
 			_vehicle setVariable ["JRS_Camp_DeployState", 0.5];
 
@@ -58,6 +66,9 @@ if (count _items > 0) then {
 
 			// Set the « Packed » state.
 			_vehicle setVariable ["JRS_Camp_DeployState", 0];
+
+			// Add CampItem to vehicle's inventory.
+			_vehicle addItemCargo ["JRS_CampItem", 1];
 
 			systemChat "Camp Removed";
 		};
