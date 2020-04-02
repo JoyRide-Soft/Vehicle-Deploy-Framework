@@ -6,7 +6,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 1.81;
-		requiredAddons[] = {};
+		requiredAddons[] = { "A3_Weapons_F" };
 		version = "0.0.1";
 	};
 };
@@ -23,6 +23,22 @@ class JRS_UserActions {
 		class Camp_Pack : Camp_Deploy {
 			displayText = "Pack the camp";
 		};
+	};
+};
+
+class CfgWeapons {
+	class ItemCore;
+	class InventoryItem_Base_F;
+	class JRS_CampItem : ItemCore {
+		scope = 2;
+		_generalMacro = "JRS_CampItem";
+		displayName = "Vehicle's object to deploy";
+		class ItemInfo : InventoryItem_Base_F {
+			// scope = 2;
+			mass = 50;
+			type = 301;
+		};
+		picture = "\A3\Weapons_F\Ammoboxes\Bags\data\UI\icon_b_assaultpack_cbr_ca.paa";
 	};
 };
 

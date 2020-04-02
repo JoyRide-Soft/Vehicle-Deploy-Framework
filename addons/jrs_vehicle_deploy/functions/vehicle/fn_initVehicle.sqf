@@ -41,7 +41,7 @@ private ["_priority", "_showWindow", "_displayText", "_selection", "_radius"];
 	if (!(isNil "_sel")) then { _selection = _sel; };
 	if (!(isNil "_rad")) then { _radius = _rad; };
 } forEach _deployAction;
-_deploy = _vehicle addAction [_displayText, "(_this select 0) call JRS_fnc_deployObjects", nil, _priority, _showWindow, true, "", "_target getVariable 'JRS_Camp_DeployState' == 0", _radius, false, _selection];
+_deploy = _vehicle addAction [_displayText, "(_this select 0) call JRS_fnc_deployObjects", nil, _priority, _showWindow, true, "", "_target getVariable 'JRS_Camp_DeployState' == 0 && 'JRS_CampItem' in itemCargo _target", _radius, false, _selection];
 
 {
 	private ["_pri", "_sho", "_dis", "_sel", "_rad"];
@@ -63,6 +63,8 @@ _deploy = _vehicle addAction [_displayText, "(_this select 0) call JRS_fnc_deplo
 	if (!(isNil "_rad")) then { _radius = _rad; };
 } forEach _packAction;
 _pack = _vehicle addAction [_displayText, "(_this select 0) call JRS_fnc_deployObjects", nil, _priority, _showWindow, true, "", "_target getVariable 'JRS_Camp_DeployState' == 1", _radius, false, _selection];
+
+_vehicle addItemCargo ["JRS_CampItem", 1];
 
 private _objectsClasses = "true" configClasses (configFile >> "CfgVehicles" >> typeOf _vehicle >> "JRS_DeployItems");
 _vehicle setVariable ["JRS_config", _objectsClasses, true];
