@@ -4,10 +4,6 @@
 
 params ["_vehicle"];
 
-// Set the camp variables.
-_vehicle setVariable ["JRS_Camp", [], true];
-_vehicle setVariable ["JRS_Camp_DeployState", 0, true];
-
 
 // Get the config for the action.
 private ["_deployAction", "_packAction"];
@@ -64,7 +60,13 @@ _deploy = _vehicle addAction [_displayText, "(_this select 0) call JRS_fnc_deplo
 } forEach _packAction;
 _pack = _vehicle addAction [_displayText, "(_this select 0) call JRS_fnc_deployObjects", nil, _priority, _showWindow, true, "", "_target getVariable 'JRS_Camp_DeployState' == 1", _radius, false, _selection];
 
+// Add the deployable items in the vehicle's inventory.
 _vehicle addItemCargo ["JRS_CampItem", 1];
 
+// Create an array of objects to create
 private _objectsClasses = "true" configClasses (configFile >> "CfgVehicles" >> typeOf _vehicle >> "JRS_DeployItems");
 _vehicle setVariable ["JRS_config", _objectsClasses, true];
+
+// Set the camp variables.
+_vehicle setVariable ["JRS_Camp", [], true];
+_vehicle setVariable ["JRS_Camp_DeployState", 0, true];
