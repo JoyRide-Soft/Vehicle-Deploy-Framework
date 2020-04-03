@@ -4,7 +4,7 @@ class CfgPatches {
 		description = "An open source and free use framework to deploy objects from vehicles";
 		author = "JoyRide Soft";
 		units[] = {};
-		weapons[] = {};
+		weapons[] = { "JRS_CampItem" };
 		requiredVersion = 1.81;
 		requiredAddons[] = { "A3_Weapons_F" };
 		version = "0.0.1";
